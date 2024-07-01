@@ -1,52 +1,36 @@
-# ENPM809X Project #1: Treaps
-**Due Date:** March 28, 2024, 04:00 PM
+# ENPM809X Project #2: Contact Graph Routing
+**Due Date:** May 2, 2024, 04:00 PM
 
 ## Overview
-This project explores the implementation and evaluation of the Treap data structure, which combines properties of a binary search tree and a heap. Treaps maintain nodes ordered by key values in a binary search tree manner and by priority values in a max-heap manner.
+This project involves implementing the Dijkstra algorithm on a contact graph, where nodes represent contacts between network nodes over time. The goal is to find the optimal path from a source node to a destination node by minimizing the "arrival time".
 
 ## Project Goals
-- Implement functions for inserting nodes (`TreapInsert`) and searching for keys (`TreapSearch`) in a Treap.
-- Build a Treap using random priorities and verify its adherence to Treap properties.
-- Compare the search efficiency of Treaps with random priorities, letter frequency-based priorities, and a simple binary search tree structure.
+Implement Dijkstra's algorithm using a minimum priority queue (heap) for efficient pathfinding in the contact graph.
+Read a contact graph from the file "ContactList.txt", which contains information about contacts between network nodes over time.
+Find the optimal path from node #8 to node #5 in the contact graph.
+Print the contact IDs corresponding to the optimal path and the resulting best arrival time.
 
 ## Tasks
-### TreapInsert Function
-- Inserts a new node into a Treap while maintaining Treap properties.
-- Inputs: Root pointer of an existing Treap and pointer to a new node containing key and priority.
-- Outputs: Root pointer of the modified Treap.
+1. **Read Contact Graph Info**
+   - Parse the "ContactList.txt" file to extract contact information including IDs, start time, end time, sender, receiver, and owlt attributes.
 
-### TreapSearch Function
-- Searches for a given key in the Treap and returns true if found, false otherwise.
-- Inputs: Root pointer of the Treap and key value to search.
+2. **Implement Minimum Priority Queue**
+   - Develop a priority queue using a heap to efficiently manage and retrieve nodes based on their arrival times during Dijkstra's algorithm.
 
-### Building the Treap
-- Use `TreapInsert` to construct a Treap using uppercase letters in the specified order:
-{'Z', 'Y', 'X', 'W', 'V', 'B', 'U', 'G', 'M', 'R', 'K', 'J', 'D', 'Q',
-'E', 'C', 'S', 'I', 'H', 'P', 'L', 'A', 'N', 'O', 'T', 'F'}
+3. **Implement Dijkstra's Algorithm**
+   - Adapt Dijkstra's algorithm to work with the contact graph structure.
+   - Use the implemented minimum priority queue instead of a linear search for optimal performance.
+   - Ignore attributes not relevant to this project such as suppr, suppr_nh, MAV, and owlt.
 
-sql
-Copy code
-- Use randomly generated priorities for each letter.
-
-### File Search Program
-- Develop a program that reads the file `FellowshipOfTheRing.txt` character by character.
-- For each uppercase character, perform a search using `TreapSearch`.
-- For each lowercase character, convert to uppercase and then search.
-- Measure total search time using `gettimeofday()`.
-
-### Priority based on Letter Frequency
-- Repeat steps 3 and 4 using priorities based on the average frequency of English letters.
-
-### Simple Binary Search Tree
-- Repeat steps 3 and 4 without using priorities, effectively creating a binary search tree.
-
-## Evaluation
-- Measure and compare average search times across the three implementations (random priorities, letter frequency-based priorities, and simple BST).
-- Determine if using Treaps improves search efficiency compared to a simple binary search tree.
+4. **Pathfinding**
+   - Start from node #8 and compute the shortest path to node #5 based on arrival time.
+   - Print the contact IDs along the optimal path and the arrival time.
 
 ## Submission Requirements
-Submit the following at the end of the project:
-- Your program (in C or Python) including `TreapInsert`, `TreapSearch` functions, and the main function; ensure it is compilable.
-- A diagram showing the resulting Treap structure from step 5, including keys and priorities of all nodes.
-- Average running times measured in steps 4, 5, and 6.
-- Answers to questions posed in steps 5 and 6.
+Submit the following by the project deadline:
+- Complete and executable code (in C or Python) implementing Dijkstra's algorithm and priority queue.
+- Well-commented code explaining the implementation details and logic.
+- Output demonstrating the optimal path found from node #8 to node #5, including the contact IDs and arrival time.
+
+## Additional Resources
+Refer to sections 3 and 4 of the paper “Routing in the Space Internet: A contact graph routing tutorial” for detailed explanations of contact graph routing and Dijkstra's algorithm adaptations.
